@@ -12,7 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Annia Gissel cumple 3 — ¡Estás invitado!" />
   <meta property="og:description"
-    content="Sábado 5 de septiembre, 14:00. Cerámica para pintar, payaso y guerreras K-pop. ¡Confirma tu asistencia!" />
+    content="Sábado 5 de septiembre, 14:00. Cerámica para pintar, payaso y guerreras K-pop. ¡Te esperamos!" />
   <meta property="og:url" content="https://richi007dx.github.io/cumple-annia/" />
   <meta property="og:image" content="https://richi007dx.github.io/cumple-annia/assets/pinata.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -111,7 +111,7 @@
         </div>
       </div>
 
-      <a href="#confirmar" class="cta-main mt-8 reveal" style="--d:.4s">CONFIRMAR ASISTENCIA</a>
+      <a href="#programa" class="cta-main mt-8 reveal" style="--d:.4s">VER LA FIESTA</a>
 
       <!-- Auto de carreras -->
       <div class="car-track reveal" style="--d:.5s">
@@ -237,61 +237,6 @@
     </div>
   </section>
 
-  <!-- ===== CONFIRMACIÓN ===== -->
-  <section id="confirmar" class="py-16 relative z-10">
-    <div class="max-w-lg mx-auto px-5">
-      <h2 class="section-title text-center">Confirma tu asistencia</h2>
-      <p id="rsvp-greeting" class="section-sub text-center">Necesitamos el nombre de los niños con anticipación.</p>
-
-      <div class="ceramic-note mt-6">
-        <span class="text-2xl leading-none">🏺</span>
-        <p>Una artista va a preparar <strong>una cerámica con el nombre de cada niño</strong> para que la pinten en la
-          fiesta. Por eso te pedimos el nombre completo — y escríbelo tal cual quieres que salga grabado.</p>
-      </div>
-
-      <form id="rsvp-form" class="form-card mt-6" novalidate>
-        <label class="field">
-          <span class="field-lbl">Tu nombre (mamá o papá)</span>
-          <input type="text" id="rsvp-parent" autocomplete="name" placeholder="Ej. María Fernández" required />
-        </label>
-
-        <label class="field">
-          <span class="field-lbl">Tu WhatsApp</span>
-          <input type="tel" id="rsvp-phone" inputmode="tel" autocomplete="tel" placeholder="Ej. 70012345" />
-        </label>
-
-        <fieldset class="field">
-          <legend class="field-lbl">¿Podrán venir?</legend>
-          <div class="attend-toggle">
-            <label><input type="radio" name="attend" value="si" checked /><span>Sí, ahí estaremos</span></label>
-            <label><input type="radio" name="attend" value="no" /><span>No podremos</span></label>
-          </div>
-        </fieldset>
-
-        <div id="kids-block">
-          <p class="field-lbl mt-1 mb-2">Nombre completo de <span id="kids-word">el niño</span></p>
-          <div id="kids-fields" class="space-y-3"></div>
-          <p class="hint">Tal cual quieres que salga escrito en la cerámica.</p>
-        </div>
-
-        <p id="rsvp-error" class="err hidden"></p>
-
-        <p class="text-center text-sm text-white/55 mt-6 mb-3">Confirma con quien prefieras:</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <button type="button" id="btn-papa" class="btn-confirm btn-confirm--papa">
-            <span class="bc-top">Confirmar con el papá</span>
-            <span class="bc-sub">Jaime Richard</span>
-          </button>
-          <button type="button" id="btn-mama" class="btn-confirm btn-confirm--mama">
-            <span class="bc-top">Confirmar con la mamá</span>
-            <span class="bc-sub">Dayana Alejandra</span>
-          </button>
-        </div>
-        <p class="hint text-center mt-4">Se abre WhatsApp con el mensaje ya escrito. Solo tienes que enviarlo.</p>
-      </form>
-    </div>
-  </section>
-
   <!-- ===== FOOTER ===== -->
   <footer class="py-14 text-center relative z-10 px-5">
     <p class="font-display neon-magenta text-xl sm:text-2xl">¡TE ESPERAMOS!</p>
@@ -299,13 +244,10 @@
     <p class="firma">
       <span class="firma-estrella">Annia Gissel Daza Quiñones</span>
       <span class="firma-nombre">Jaime Richard Daza Guzmán</span>
-      <span class="firma-nombre"><span class="firma-y">y</span> Dayana Alejandra Quiñones Mejía</span>
+      <span class="firma-nombre">Dayana Alejandra Quiñones Mejía</span>
     </p>
     <p class="mt-5 text-white/35 text-sm">3 años · Cochabamba, septiembre 2026</p>
   </footer>
-
-  <!-- ===== PÍLDORA STICKY ===== -->
-  <a href="#confirmar" id="sticky-cta">Confirmar asistencia</a>
 
   <!-- ===== REPRODUCTOR DE MÚSICA ===== -->
   <audio id="voz-annia" preload="auto">

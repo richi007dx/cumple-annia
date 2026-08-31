@@ -1,68 +1,54 @@
 # Invitación — Annia Gissel cumple 3
 
-Página estática para la fiesta del **sábado 5 de septiembre de 2026, 14:00**, en Cochabamba.
-Recoge la confirmación de asistencia y, sobre todo, **el nombre completo de cada niño**,
-que la artista necesita con anticipación para preparar las cerámicas.
+Página estática para la fiesta del **sábado 5 de septiembre de 2026, 14:00**,
+en Cochabamba. Es solo una invitación: se comparte el link por WhatsApp y ya.
+No pide datos ni confirma asistencia.
 
-## Links personalizados
+## Archivos en `assets/`
 
-El link se arma con el número de niños de cada familia:
+Si alguno falta, esa parte no aparece en vez de romperse:
 
-| Link | Qué muestra |
-|---|---|
-| `...github.io/cumple-annia/` | 1 campo de nombre |
-| `...github.io/cumple-annia/?ninos=2` | 2 campos, uno por hermano |
-| `...github.io/cumple-annia/?ninos=3&fam=Familia%20Pérez` | 3 campos + saludo con el apellido |
-
-`ninos` acepta de 1 a 6. Si falta o viene con basura, muestra 1 campo.
-El espacio en `fam` se escribe `%20`.
-
-## Falta poner (opcional, la página funciona sin esto)
-
-Todo esto va en `assets/`. Si un archivo no está, esa parte simplemente no aparece
-en lugar de romperse:
-
-- `pinata.jpg` — foto de la piñata. Se usa de fondo del hero y como imagen del link
-  al compartirlo por WhatsApp. **Es la que más se nota: sin ella el link se comparte sin foto.**
-- `video.mp4` — si existe, aparece una sección de video en bucle y sin sonido.
+- `heroes.png` — el recorte sin fondo. Manda en el hero; si no carga, sale un
+  auto de carreras dibujado en SVG como respaldo.
+- `pinata.jpg` — foto de la piñata. Va en el punto "La piñata" del programa y
+  como imagen del link al compartirlo por WhatsApp. **Es la que más se nota:
+  sin ella el link se comparte sin foto.**
 - `voz.m4a` — nota de voz de Annia invitando. Suena primero, al tocar la
   pantalla de largada, y la canción entra recién cuando termina. Venía de
   WhatsApp en `.opus`, que Safari en iPhone no reproduce; por eso está en AAC.
-- `musica.m4a` — si existe, aparece el botón de música abajo a la derecha.
-  Va en AAC 96 kbps: al ser el archivo más pesado de la página, el mp3 original
-  de 192 kbps pesaba el doble sin diferencia audible de fondo.
-
-## Conectar la hoja de cálculo
-
-1. Nueva hoja en Google Sheets.
-2. Extensiones → Apps Script. Borrar todo y pegar `google_apps_script.js`.
-3. Implementar → Nueva implementación → **Aplicación web**
-   · Ejecutar como: **Yo** · Quién tiene acceso: **Cualquier persona**
-4. Copiar la URL que termina en `/exec`.
-5. Pegarla en `app.js`, en `GOOGLE_SHEET_WEBHOOK_URL` (reemplazando `'PENDIENTE'`).
-
-Mientras diga `PENDIENTE`, la confirmación por WhatsApp funciona igual; solo no se
-guarda la fila en la hoja.
-
-Columnas: Fecha · Confirma · Teléfono · Asiste · Confirmado con · Cantidad de niños ·
-Nombres de los niños · Link usado.
+- `musica.m4a` — música de fondo, en AAC 96 kbps. Es el archivo más pesado de
+  la página, y solo se descarga si alguien le da play.
+- `video.mp4` — opcional. Si existe, aparece una sección de video en bucle y
+  sin sonido.
 
 ## Publicar
 
 ```
-git remote add origin https://github.com/richi007dx/cumple-annia.git
-git push -u origin main
+git push origin main
 ```
 
-Luego en GitHub: Settings → Pages → Deploy from branch → `main` / `root`.
+GitHub Pages sirve desde `main` / `root`. Tarda uno o dos minutos.
 
 ## Notas para tocar el código
 
-- **El orden en `handleRSVP` importa.** WhatsApp se abre con `window.open` *antes*
-  del `fetch`, dentro del contexto del clic. Si se invierte, Safari y Chrome
-  bloquean la ventana. Es el mismo problema que ya se arregló en la página de la boda.
+- **El audio no puede arrancar solo.** Ningún navegador lo permite sin un gesto
+  previo del usuario; por eso la pantalla de largada espera un toque. Hay tres
+  caminos hacia la música: ese toque, la primera interacción si alguien entró
+  sin tocar (la pantalla se abre sola a los 8 s), y el botón de la esquina.
+- **`heroCutout` consulta `img.complete` antes de escuchar el evento `load`.**
+  El `<img>` está en el HTML, así que en una visita repetida viene de caché y
+  su evento ya se disparó. Escuchando solo el evento, el recorte se veía la
+  primera vez y desaparecía la segunda.
 - Los `.reveal` tienen tres caminos para hacerse visibles (barrido inicial,
-  IntersectionObserver y un timeout de 2.5s). La animación es un adorno; que el
-  contenido se vea no es negociable.
+  IntersectionObserver y un timeout de 2.5 s). La animación es un adorno; que
+  el contenido se vea no es negociable.
 - La cuenta regresiva está anclada a `2026-09-05T14:00:00-04:00`, así que da la
   hora correcta desde cualquier zona horaria.
+
+## Historial
+
+Hubo una versión con formulario de confirmación que guardaba los nombres de los
+niños en una hoja de cálculo vía Google Apps Script. Se quitó a pedido. Si
+alguna vez hace falta, está en el historial de git junto con
+`google_apps_script.js` (ver el commit anterior a "La página pasa a ser solo
+una invitación").

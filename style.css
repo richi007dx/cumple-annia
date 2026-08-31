@@ -424,129 +424,6 @@ body:has(.car-track.has-cutout) #hero-photo {
 
 .map-frame iframe { width: 100%; height: 300px; border: 0; filter: saturate(1.05); }
 
-/* ===== FORMULARIO ===== */
-.ceramic-note {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  padding: 15px 16px;
-  border-radius: 14px;
-  border: 1.5px dashed rgba(255, 210, 63, .5);
-  background: rgba(255, 210, 63, .08);
-  color: rgba(255, 255, 255, .8);
-  font-size: 14.5px;
-  line-height: 1.45;
-}
-
-.ceramic-note strong { color: var(--gold); }
-
-.form-card {
-  padding: 22px 20px 24px;
-  border-radius: 20px;
-  background: rgba(29, 13, 51, .7);
-  border: 1.5px solid rgba(168, 85, 247, .35);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, .45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-.field { display: block; margin-bottom: 16px; border: 0; padding: 0; }
-
-.field-lbl {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .04em;
-  color: rgba(255, 255, 255, .72);
-  margin-bottom: 6px;
-}
-
-.form-card input[type="text"],
-.form-card input[type="tel"] {
-  width: 100%;
-  padding: 13px 14px;
-  font-size: 16px; /* 16px evita el zoom automático en iOS */
-  font-family: inherit;
-  color: #fff;
-  background: rgba(255, 255, 255, .07);
-  border: 1.5px solid rgba(255, 255, 255, .16);
-  border-radius: 12px;
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-
-.form-card input::placeholder { color: rgba(255, 255, 255, .32); }
-
-.form-card input:focus {
-  outline: none;
-  border-color: var(--magenta);
-  box-shadow: 0 0 0 3px rgba(255, 45, 149, .22);
-}
-
-.form-card input.invalid { border-color: #ff5a6e; box-shadow: 0 0 0 3px rgba(255, 90, 110, .18); }
-
-.attend-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.attend-toggle input { position: absolute; opacity: 0; pointer-events: none; }
-
-.attend-toggle span {
-  display: block;
-  text-align: center;
-  padding: 12px 8px;
-  border-radius: 12px;
-  border: 1.5px solid rgba(255, 255, 255, .16);
-  background: rgba(255, 255, 255, .05);
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, .7);
-  cursor: pointer;
-  transition: all .2s ease;
-}
-
-.attend-toggle input:checked + span {
-  border-color: var(--magenta);
-  background: rgba(255, 45, 149, .18);
-  color: #fff;
-  box-shadow: 0 0 14px rgba(255, 45, 149, .3);
-}
-
-.attend-toggle input:focus-visible + span { outline: 2px solid var(--cyan); outline-offset: 2px; }
-
-#kids-block { transition: opacity .3s ease; }
-#kids-block.disabled { opacity: .35; pointer-events: none; }
-
-.hint { font-size: 12.5px; color: rgba(255, 255, 255, .45); margin-top: 8px; }
-
-.err {
-  margin-top: 14px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: rgba(255, 90, 110, .14);
-  border: 1px solid rgba(255, 90, 110, .4);
-  color: #ffbcc5;
-  font-size: 14px;
-}
-
-.btn-confirm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1px;
-  padding: 13px 12px;
-  border-radius: 14px;
-  color: #fff;
-  font-family: inherit;
-  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
-}
-
-.btn-confirm .bc-top { font-weight: 800; font-size: 14.5px; }
-.btn-confirm .bc-sub { font-size: 12px; opacity: .8; }
-
-.btn-confirm--papa { background: linear-gradient(135deg, #0d97b8, #1e5fbf); box-shadow: 0 0 18px rgba(0, 229, 255, .35); }
-.btn-confirm--mama { background: linear-gradient(135deg, var(--magenta), #c026d3); box-shadow: 0 0 18px rgba(255, 45, 149, .4); }
-
-.btn-confirm:hover:not(:disabled) { transform: translateY(-2px); }
-.btn-confirm:active:not(:disabled) { transform: scale(.98); }
-.btn-confirm:disabled { opacity: .55; cursor: not-allowed; transform: none; }
-
 /* ===== FIRMA DEL FOOTER ===== */
 .firma {
   display: flex;
@@ -567,10 +444,6 @@ body:has(.car-track.has-cutout) #hero-photo {
 
 .firma-nombre { color: rgba(255, 255, 255, .85); font-weight: 600; }
 
-/* La "y" en tono bajo para que se lea como enlace entre nombres
-   y no como parte del nombre de Dayana. */
-.firma-y { color: rgba(255, 255, 255, .38); font-weight: 400; }
-
 /* ===== FOTO DE LA PIÑATA EN EL PROGRAMA ===== */
 .pinata-shot {
   margin-top: 12px;
@@ -587,31 +460,6 @@ body:has(.car-track.has-cutout) #hero-photo {
   object-fit: cover;
   object-position: center 42%;
   display: block;
-}
-
-/* ===== PÍLDORA STICKY ===== */
-#sticky-cta {
-  position: fixed;
-  left: 50%;
-  bottom: 22px;
-  transform: translate(-50%, 120%);
-  z-index: 45;
-  padding: 13px 24px;
-  border-radius: 999px;
-  font-weight: 800;
-  font-size: 14.5px;
-  color: #fff;
-  background: linear-gradient(135deg, var(--magenta), var(--violet));
-  box-shadow: 0 0 22px rgba(255, 45, 149, .5), 0 8px 20px rgba(0, 0, 0, .5);
-  transition: transform .35s cubic-bezier(.2, .8, .2, 1), opacity .35s ease;
-  opacity: 0;
-  white-space: nowrap;
-}
-
-#sticky-cta.show { transform: translate(-50%, 0); opacity: 1; }
-
-@media (max-width: 380px) {
-  #sticky-cta { font-size: 13px; padding: 12px 18px; }
 }
 
 /* ===== REPRODUCTOR (portado de la página de la boda) ===== */
