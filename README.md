@@ -11,8 +11,12 @@ Si alguno falta, esa parte no aparece en vez de romperse:
 - `heroes.png` — el recorte sin fondo. Manda en el hero; si no carga, sale un
   auto de carreras dibujado en SVG como respaldo.
 - `pinata.jpg` — foto de la piñata. Va en el punto "La piñata" del programa y
-  como imagen del link al compartirlo por WhatsApp. **Es la que más se nota:
-  sin ella el link se comparte sin foto.**
+  como fondo del hero.
+- `og.jpg` — la imagen del preview al compartir el link. Es un recorte de la
+  anterior a 1200x630, la proporción que WhatsApp y Facebook esperan. Va
+  aparte y no reutiliza `pinata.jpg` porque las meta tags declaran el tamaño
+  y esos clientes reservan el espacio del preview antes de bajar el archivo:
+  si el número no coincide, el preview sale recortado o en miniatura.
 - `voz.m4a` — nota de voz de Annia invitando. Suena primero, al tocar la
   pantalla de largada, y la canción entra recién cuando termina. Venía de
   WhatsApp en `.opus`, que Safari en iPhone no reproduce; por eso está en AAC.
