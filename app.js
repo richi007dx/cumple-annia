@@ -64,11 +64,21 @@
     var track = document.querySelector('.car-track');
     if (!img || !track) return;
 
-    img.addEventListener('load', function () {
+    function usar() {
       img.classList.add('ready');
       track.classList.add('has-cutout');
-    });
-    img.addEventListener('error', function () { img.remove(); });
+    }
+
+    // OJO: el <img> está en el HTML, así que en una visita repetida ya viene
+    // de caché y su evento 'load' se disparó ANTES de que corriera este script.
+    // Si solo escucháramos el evento, el recorte desaparecería en la segunda
+    // visita. Por eso primero se pregunta si ya terminó de cargar.
+    if (img.complete) {
+      if (img.naturalWidth > 0) usar(); else img.remove();
+    } else {
+      img.addEventListener('load', usar);
+      img.addEventListener('error', function () { img.remove(); });
+    }
   })();
 
   // ===== VIDEO OPCIONAL ===============================================

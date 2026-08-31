@@ -241,7 +241,14 @@ body {
 
 /* Con el recorte al frente, la misma foto de fondo ensucia:
    la bajamos a textura para que no compitan. */
-body:has(.car-track.has-cutout) #hero-photo { opacity: .12; }
+body:has(.car-track.has-cutout) #hero-photo {
+  opacity: .14;
+  /* El desenfoque mata el texto del globo, que cortado a media palabra
+     distraía. Queda como textura y no como una segunda imagen. */
+  /* slowZoom ya mantiene la escala entre 1.04 y 1.16, así que los bordes
+     que el desenfoque deja transparentes quedan fuera de cuadro solos. */
+  filter: blur(4px);
+}
 .car { width: 190px; margin: 0 auto -6px; display: block; animation: carBob 1.1s ease-in-out infinite; }
 
 .car-body    { fill: var(--racing); }
