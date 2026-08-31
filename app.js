@@ -30,7 +30,7 @@
     function entrar(conToque) {
       if (cerrado) return;
       cerrado = true;
-      if (conToque) iniciarMusica(); // el gesto que el navegador exige
+      if (conToque) reproducirIntro(); // el gesto que el navegador exige
       overlay.classList.add('fade-out');
       setTimeout(function () { overlay.style.display = 'none'; }, 700);
       burstConfetti(34);
@@ -311,6 +311,7 @@
   // ES el permiso. Si alguien entra sin tocar, la música arranca en su
   // primera interacción, y si no, siempre queda el botón de la esquina.
   var audioDisponible = true;
+  var vozDisponible = true;
   var musicaArrancada = false;
 
   function sincronizarBotonMusica() {
@@ -340,6 +341,26 @@
     });
   }
 
+  // Primero habla Annia, después entra la canción. Si por lo que sea la voz
+  // no está o no puede sonar, se pasa directo a la música: nunca se queda
+  // todo en silencio esperando un audio que no va a llegar.
+  var introArrancada = false;
+
+  function reproducirIntro() {
+    if (introArrancada) return;
+    introArrancada = true;
+
+    var voz = $('voz-annia');
+    if (!voz || !vozDisponible) { iniciarMusica(); return; }
+
+    voz.addEventListener('ended', iniciarMusica, { once: true });
+    voz.volume = 1;
+    voz.play().catch(function (e) {
+      console.log('No se pudo reproducir la voz:', e);
+      iniciarMusica();
+    });
+  }
+
   (function reproductor() {
     var audio = $('bg-music'), btn = $('custom-audio-btn');
     if (!audio || !btn) return;
@@ -349,6 +370,9 @@
       audioDisponible = false;
       btn.style.display = 'none';
     });
+
+    var voz = $('voz-annia');
+    if (voz) voz.addEventListener('error', function () { vozDisponible = false; });
 
     audio.volume = 0.4;
 
@@ -368,7 +392,7 @@
 
     // Red de seguridad para quien entró sin tocar la pantalla de largada.
     ['pointerdown', 'touchstart', 'keydown'].forEach(function (ev) {
-      document.addEventListener(ev, iniciarMusica, { once: true, passive: true });
+      document.addEventListener(ev, reproducirIntro, { once: true, passive: true });
     });
   })();
 

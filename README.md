@@ -25,6 +25,9 @@ en lugar de romperse:
 - `pinata.jpg` — foto de la piñata. Se usa de fondo del hero y como imagen del link
   al compartirlo por WhatsApp. **Es la que más se nota: sin ella el link se comparte sin foto.**
 - `video.mp4` — si existe, aparece una sección de video en bucle y sin sonido.
+- `voz.m4a` — nota de voz de Annia invitando. Suena primero, al tocar la
+  pantalla de largada, y la canción entra recién cuando termina. Venía de
+  WhatsApp en `.opus`, que Safari en iPhone no reproduce; por eso está en AAC.
 - `musica.m4a` — si existe, aparece el botón de música abajo a la derecha.
   Va en AAC 96 kbps: al ser el archivo más pesado de la página, el mp3 original
   de 192 kbps pesaba el doble sin diferencia audible de fondo.
