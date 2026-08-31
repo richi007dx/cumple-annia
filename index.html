@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Annia Gissel cumple 3 — ¡Estás invitado!</title>
+  <meta name="description"
+    content="Annia Gissel cumple 3 años. Fiesta el sábado 5 de septiembre a las 14:00 en Cochabamba. Cerámica para pintar, payaso y guerreras K-pop." />
+
+  <!-- Open Graph / WhatsApp / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Annia Gissel cumple 3 — ¡Estás invitado!" />
+  <meta property="og:description"
+    content="Sábado 5 de septiembre, 14:00. Cerámica para pintar, payaso y guerreras K-pop. ¡Confirma tu asistencia!" />
+  <meta property="og:url" content="https://richi007dx.github.io/cumple-annia/" />
+  <meta property="og:image" content="https://richi007dx.github.io/cumple-annia/assets/pinata.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_BO" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Annia Gissel cumple 3 — ¡Estás invitado!" />
+  <meta name="twitter:description"
+    content="Sábado 5 de septiembre, 14:00. Cerámica para pintar, payaso y guerreras K-pop." />
+  <meta name="twitter:image" content="https://richi007dx.github.io/cumple-annia/assets/pinata.jpg" />
+
+  <meta name="theme-color" content="#12071f" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee&family=Baloo+2:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            night: '#12071f', 'night-2': '#1d0d33', magenta: '#ff2d95',
+            cyan: '#00e5ff', gold: '#ffd23f', racing: '#e8102d', violet: '#a855f7'
+          },
+          fontFamily: { display: ['Bungee', 'cursive'], body: ['"Baloo 2"', 'sans-serif'] },
+        }
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-night text-white font-body antialiased overflow-x-hidden">
+
+  <!-- ===== SEMÁFORO DE LARGADA ===== -->
+  <div id="start-overlay">
+    <div class="text-center px-6">
+      <p class="font-display text-cyan text-sm sm:text-base tracking-widest mb-6 opacity-80">PREPARADOS...</p>
+      <div class="flex justify-center gap-4 sm:gap-6 mb-8">
+        <span class="start-light" data-light="1"></span>
+        <span class="start-light" data-light="2"></span>
+        <span class="start-light" data-light="3"></span>
+      </div>
+      <p id="start-go" class="font-display text-3xl sm:text-5xl neon-magenta opacity-0">¡ARRANCAMOS!</p>
+      <button id="start-skip" class="mt-10 text-xs tracking-widest text-white/50 hover:text-white transition-colors">
+        SALTAR ▸
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16 pb-24">
+    <!-- Fondo: foto de la piñata (si existe) -->
+    <img id="hero-photo" src="assets/pinata.jpg" alt="" aria-hidden="true" />
+    <div id="hero-veil"></div>
+
+    <!-- Escena animada -->
+    <div id="scene" aria-hidden="true">
+      <div class="dino-row">
+        <svg class="dino dino-a" viewBox="0 0 120 120"><path d="M8 30C8 20 16 14 27 14C36 14 43 20 45 28C50 36 56 38 63 42C74 47 82 50 92 49C102 48 110 46 117 43L118 50C108 55 98 58 88 59C84 66 82 72 80 78L84 108L74 108L70 80L58 82L56 108L46 108L48 76C42 70 38 62 37 54C34 48 30 44 24 42L10 38C8 36 8 33 8 30Z"/><circle cx="25" cy="27" r="2.8" fill="#12071f" opacity=".75"/></svg>
+        <svg class="dino dino-b" viewBox="0 0 120 120"><path d="M8 30C8 20 16 14 27 14C36 14 43 20 45 28C50 36 56 38 63 42C74 47 82 50 92 49C102 48 110 46 117 43L118 50C108 55 98 58 88 59C84 66 82 72 80 78L84 108L74 108L70 80L58 82L56 108L46 108L48 76C42 70 38 62 37 54C34 48 30 44 24 42L10 38C8 36 8 33 8 30Z"/><circle cx="25" cy="27" r="2.8" fill="#12071f" opacity=".75"/></svg>
+        <svg class="dino dino-c" viewBox="0 0 120 120"><path d="M8 30C8 20 16 14 27 14C36 14 43 20 45 28C50 36 56 38 63 42C74 47 82 50 92 49C102 48 110 46 117 43L118 50C108 55 98 58 88 59C84 66 82 72 80 78L84 108L74 108L70 80L58 82L56 108L46 108L48 76C42 70 38 62 37 54C34 48 30 44 24 42L10 38C8 36 8 33 8 30Z"/><circle cx="25" cy="27" r="2.8" fill="#12071f" opacity=".75"/></svg>
+      </div>
+      <div class="speed-lines">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="relative z-20 text-center px-5 max-w-2xl mx-auto">
+      <p class="font-display text-[10px] sm:text-xs tracking-[0.3em] text-cyan mb-5 reveal">WORLD TOUR · COCHABAMBA</p>
+
+      <div class="neon-frame reveal" style="--d:.1s">
+        <h1 class="font-display leading-none">
+          <span class="block text-4xl sm:text-6xl neon-magenta">ANNIA</span>
+          <span class="block text-4xl sm:text-6xl neon-cyan mt-1">GISSEL</span>
+        </h1>
+        <div class="age-badge">
+          <span class="age-num">3</span>
+          <span class="age-lbl">AÑOS</span>
+        </div>
+      </div>
+
+      <p class="mt-14 text-base sm:text-lg text-white/85 font-medium reveal" style="--d:.2s">
+        Jaime Richard y Dayana Alejandra<br class="sm:hidden" /> tienen el gusto de invitarte
+      </p>
+
+      <div class="mt-7 grid grid-cols-2 gap-3 max-w-md mx-auto reveal" style="--d:.3s">
+        <div class="date-card">
+          <p class="date-tag">CUMPLE</p>
+          <p class="date-big">VIE 4</p>
+          <p class="date-sub">septiembre</p>
+        </div>
+        <div class="date-card date-card--party">
+          <p class="date-tag">LA FIESTA</p>
+          <p class="date-big">SÁB 5</p>
+          <p class="date-sub">14:00 hrs</p>
+        </div>
+      </div>
+
+      <a href="#confirmar" class="cta-main mt-8 reveal" style="--d:.4s">CONFIRMAR ASISTENCIA</a>
+
+      <!-- Auto de carreras -->
+      <div class="car-track reveal" style="--d:.5s">
+        <svg class="car" viewBox="0 0 240 110">
+          <ellipse cx="120" cy="102" rx="96" ry="6" fill="#000" opacity=".45" />
+          <path class="car-body" d="M14 74c0-12 10-18 26-20l38-4c14-16 34-22 60-22 28 0 48 8 60 24l18 4c14 3 18 8 18 18v6c0 4-3 6-7 6H21c-4 0-7-2-7-6z" />
+          <path class="car-glass" d="M96 48c10-12 26-14 42-13l18 13z" />
+          <path class="car-stripe" d="M32 66h176v7H32z" opacity=".55" />
+          <rect class="car-spoiler" x="192" y="38" width="40" height="7" rx="3" />
+          <rect class="car-spoiler" x="200" y="43" width="6" height="14" rx="2" />
+          <rect class="car-spoiler" x="219" y="43" width="6" height="14" rx="2" />
+          <circle class="car-roundel" cx="118" cy="66" r="15" />
+          <text x="118" y="73" class="car-num" text-anchor="middle">3</text>
+          <g class="wheel">
+            <circle cx="62" cy="86" r="19" fill="#0d0d12" />
+            <circle cx="62" cy="86" r="9" fill="#c9ccd6" />
+            <circle cx="62" cy="86" r="4" fill="#6b7280" />
+          </g>
+          <g class="wheel">
+            <circle cx="184" cy="86" r="19" fill="#0d0d12" />
+            <circle cx="184" cy="86" r="9" fill="#c9ccd6" />
+            <circle cx="184" cy="86" r="4" fill="#6b7280" />
+          </g>
+        </svg>
+        <div class="road"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CUENTA REGRESIVA ===== -->
+  <section id="countdown" class="py-14 sm:py-16 relative z-10">
+    <div class="max-w-3xl mx-auto px-5 text-center">
+      <h2 class="section-title">Faltan</h2>
+      <div id="cd-grid" class="grid grid-cols-4 gap-2 sm:gap-4 mt-7">
+        <div class="cd-box"><span id="cd-days">--</span><small>días</small></div>
+        <div class="cd-box"><span id="cd-hours">--</span><small>horas</small></div>
+        <div class="cd-box"><span id="cd-min">--</span><small>min</small></div>
+        <div class="cd-box"><span id="cd-sec">--</span><small>seg</small></div>
+      </div>
+      <p id="cd-live" class="hidden font-display text-2xl sm:text-3xl neon-gold mt-4">¡HOY ES LA FIESTA! 🎉</p>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO (opcional) ===== -->
+  <section id="video-section" class="hidden py-8 relative z-10">
+    <div class="max-w-2xl mx-auto px-5">
+      <div class="video-wrap">
+        <video id="hero-video" playsinline muted loop preload="metadata" poster="assets/pinata.jpg"></video>
+        <button id="video-sound" aria-label="Activar sonido del video">🔇</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAMA ===== -->
+  <section id="programa" class="py-16 relative z-10">
+    <div class="max-w-2xl mx-auto px-5">
+      <h2 class="section-title text-center">El programa</h2>
+      <p class="section-sub text-center">Llega puntual: la cerámica arranca a las 2 en punto.</p>
+
+      <ol class="timeline mt-10">
+        <li class="tl-item">
+          <span class="tl-dot">🎨</span>
+          <div class="tl-body">
+            <p class="tl-time">14:00</p>
+            <h3 class="tl-title">Pintura de cerámica</h3>
+            <p class="tl-desc">Figuras y el nombre de cada niño, listas para pintar.</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-dot">🤹</span>
+          <div class="tl-body">
+            <p class="tl-time">15:00</p>
+            <h3 class="tl-title">Payaso y Guerreras K-pop</h3>
+            <p class="tl-desc">Show y animación para todos.</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-dot">🎂</span>
+          <div class="tl-body">
+            <p class="tl-time tl-time--soft">y después...</p>
+            <h3 class="tl-title">La torta</h3>
+            <p class="tl-desc">Soplamos la vela y cantamos.</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-dot">🪅</span>
+          <div class="tl-body">
+            <p class="tl-time tl-time--soft">seguido de</p>
+            <h3 class="tl-title">La piñata</h3>
+            <p class="tl-desc">Guerreras K-pop, auto de carreras y dinosaurios.</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-dot">🎁</span>
+          <div class="tl-body">
+            <p class="tl-time tl-time--soft">para cerrar</p>
+            <h3 class="tl-title">Canastitas</h3>
+            <p class="tl-desc">Repartimos las canastitas antes de irnos.</p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="text-center text-white/45 text-sm mt-8">Sin hora de cierre — nos quedamos hasta que el cuerpo aguante.</p>
+    </div>
+  </section>
+
+  <!-- ===== UBICACIÓN ===== -->
+  <section id="ubicacion" class="py-16 relative z-10">
+    <div class="max-w-2xl mx-auto px-5">
+      <h2 class="section-title text-center">Dónde es</h2>
+      <p class="section-sub text-center">Cochabamba · sábado 5 de septiembre, 14:00</p>
+      <div class="map-frame mt-7">
+        <iframe title="Mapa de la ubicación de la fiesta" loading="lazy" allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=-17.431184,-66.160656&z=17&output=embed"></iframe>
+      </div>
+      <a href="https://maps.app.goo.gl/61GGC3v68wjQaUX17" target="_blank" rel="noopener noreferrer"
+        class="cta-ghost mt-4">📍 Cómo llegar</a>
+    </div>
+  </section>
+
+  <!-- ===== CONFIRMACIÓN ===== -->
+  <section id="confirmar" class="py-16 relative z-10">
+    <div class="max-w-lg mx-auto px-5">
+      <h2 class="section-title text-center">Confirma tu asistencia</h2>
+      <p id="rsvp-greeting" class="section-sub text-center">Necesitamos el nombre de los niños con anticipación.</p>
+
+      <div class="ceramic-note mt-6">
+        <span class="text-2xl leading-none">🏺</span>
+        <p>Una artista va a preparar <strong>una cerámica con el nombre de cada niño</strong> para que la pinten en la
+          fiesta. Por eso te pedimos el nombre completo — y escríbelo tal cual quieres que salga grabado.</p>
+      </div>
+
+      <form id="rsvp-form" class="form-card mt-6" novalidate>
+        <label class="field">
+          <span class="field-lbl">Tu nombre (mamá o papá)</span>
+          <input type="text" id="rsvp-parent" autocomplete="name" placeholder="Ej. María Fernández" required />
+        </label>
+
+        <label class="field">
+          <span class="field-lbl">Tu WhatsApp</span>
+          <input type="tel" id="rsvp-phone" inputmode="tel" autocomplete="tel" placeholder="Ej. 70012345" />
+        </label>
+
+        <fieldset class="field">
+          <legend class="field-lbl">¿Podrán venir?</legend>
+          <div class="attend-toggle">
+            <label><input type="radio" name="attend" value="si" checked /><span>Sí, ahí estaremos</span></label>
+            <label><input type="radio" name="attend" value="no" /><span>No podremos</span></label>
+          </div>
+        </fieldset>
+
+        <div id="kids-block">
+          <p class="field-lbl mt-1 mb-2">Nombre completo de <span id="kids-word">el niño</span></p>
+          <div id="kids-fields" class="space-y-3"></div>
+          <p class="hint">Tal cual quieres que salga escrito en la cerámica.</p>
+        </div>
+
+        <p id="rsvp-error" class="err hidden"></p>
+
+        <p class="text-center text-sm text-white/55 mt-6 mb-3">Confirma con quien prefieras:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button type="button" id="btn-papa" class="btn-confirm btn-confirm--papa">
+            <span class="bc-top">Confirmar con el papá</span>
+            <span class="bc-sub">Jaime Richard</span>
+          </button>
+          <button type="button" id="btn-mama" class="btn-confirm btn-confirm--mama">
+            <span class="bc-top">Confirmar con la mamá</span>
+            <span class="bc-sub">Dayana Alejandra</span>
+          </button>
+        </div>
+        <p class="hint text-center mt-4">Se abre WhatsApp con el mensaje ya escrito. Solo tienes que enviarlo.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="py-14 text-center relative z-10 px-5">
+    <p class="font-display neon-magenta text-xl sm:text-2xl">¡TE ESPERAMOS!</p>
+    <p class="mt-4 text-white/60">Con cariño,</p>
+    <p class="text-white/85 font-semibold">Jaime Richard Daza Guzmán<br />y Dayana Alejandra Quiñones Mejía</p>
+    <p class="mt-5 text-white/35 text-sm">Annia Gissel Daza Quiñones · 3 años · Cochabamba 2026</p>
+  </footer>
+
+  <!-- ===== PÍLDORA STICKY ===== -->
+  <a href="#confirmar" id="sticky-cta">Confirmar asistencia</a>
+
+  <!-- ===== REPRODUCTOR DE MÚSICA ===== -->
+  <audio id="bg-music" loop preload="none">
+    <source src="assets/musica.mp3" type="audio/mpeg" />
+  </audio>
+  <button id="custom-audio-btn" aria-label="Reproducir o pausar música">
+    <svg id="icon-play" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M8 5v14l11-7z" />
+    </svg>
+    <svg id="icon-pause" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M10 4H6v16h4V4zm8 0h-4v16h4V4z" />
+    </svg>
+  </button>
+
+  <div id="confetti-layer" aria-hidden="true"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
