@@ -18,35 +18,41 @@
   var $ = function (id) { return document.getElementById(id); };
 
   // ===== SEMÁFORO DE LARGADA ==========================================
-  (function startLights() {
+  (function largada() {
     var overlay = $('start-overlay');
     if (!overlay) return;
 
-    var lights = Array.prototype.slice.call(document.querySelectorAll('.start-light'));
+    var luces = Array.prototype.slice.call(document.querySelectorAll('.start-light'));
     var go = $('start-go');
-    var skip = $('start-skip');
-    var closed = false;
+    var hint = $('start-hint');
+    var cerrado = false;
 
-    function close() {
-      if (closed) return;
-      closed = true;
+    function entrar(conToque) {
+      if (cerrado) return;
+      cerrado = true;
+      if (conToque) iniciarMusica(); // el gesto que el navegador exige
       overlay.classList.add('fade-out');
       setTimeout(function () { overlay.style.display = 'none'; }, 700);
       burstConfetti(34);
     }
 
-    lights.forEach(function (l, i) {
-      setTimeout(function () { l.classList.add('on'); }, 500 + i * 550);
+    luces.forEach(function (l, k) {
+      setTimeout(function () { l.classList.add('on'); }, 500 + k * 550);
     });
 
-    setTimeout(function () {
-      lights.forEach(function (l) { l.classList.remove('on'); l.classList.add('go'); });
-      if (go) go.classList.add('show');
-    }, 500 + lights.length * 550);
+    var finLuces = 500 + luces.length * 550;
 
-    setTimeout(close, 500 + lights.length * 550 + 900);
-    if (skip) skip.addEventListener('click', close);
-    overlay.addEventListener('click', close);
+    setTimeout(function () {
+      luces.forEach(function (l) { l.classList.remove('on'); l.classList.add('go'); });
+      if (go) go.classList.add('show');
+      if (hint) hint.classList.add('show');
+      overlay.classList.add('armed');
+      overlay.addEventListener('click', function () { entrar(true); });
+    }, finLuces);
+
+    // Si nadie toca, la invitación se abre igual a los 8 s. Nadie se queda
+    // mirando una pantalla negra por no entender que había que tocar.
+    setTimeout(function () { entrar(false); }, finLuces + 8000);
   })();
 
   // ===== FOTO DEL HERO (si no existe, se oculta) ======================
@@ -299,49 +305,71 @@
   if (btnPapa) btnPapa.addEventListener('click', function () { handleRSVP(WA_PAPA, 'Papá'); });
   if (btnMama) btnMama.addEventListener('click', function () { handleRSVP(WA_MAMA, 'Mamá'); });
 
-  // ===== REPRODUCTOR DE MÚSICA (portado de la boda) ===================
-  (function musicPlayer() {
+  // ===== MÚSICA DE FONDO ==============================================
+  // Ningún navegador deja que el audio arranque solo: hace falta un gesto
+  // del usuario. Por eso la pantalla de entrada pide un toque — ese toque
+  // ES el permiso. Si alguien entra sin tocar, la música arranca en su
+  // primera interacción, y si no, siempre queda el botón de la esquina.
+  var audioDisponible = true;
+  var musicaArrancada = false;
+
+  function sincronizarBotonMusica() {
+    var audio = $('bg-music'), btn = $('custom-audio-btn');
+    var iPlay = $('icon-play'), iPause = $('icon-pause');
+    if (!audio || !btn) return;
+    if (audio.paused) {
+      btn.classList.remove('playing');
+      iPlay.classList.remove('hidden');
+      iPause.classList.add('hidden');
+    } else {
+      btn.classList.add('playing');
+      iPlay.classList.add('hidden');
+      iPause.classList.remove('hidden');
+    }
+  }
+
+  function iniciarMusica() {
+    if (musicaArrancada || !audioDisponible) return;
     var audio = $('bg-music');
-    var btn = $('custom-audio-btn');
-    var iconPlay = $('icon-play');
-    var iconPause = $('icon-pause');
+    if (!audio) return;
+    audio.play().then(function () {
+      musicaArrancada = true;
+    }).catch(function (e) {
+      // Si el navegador igual lo bloquea, no insistimos: queda el botón.
+      console.log('El navegador bloqueó la reproducción:', e);
+    });
+  }
+
+  (function reproductor() {
+    var audio = $('bg-music'), btn = $('custom-audio-btn');
     if (!audio || !btn) return;
 
-    var available = true;
-
     audio.addEventListener('error', function () {
-      // Sin mp3 todavía: escondemos el botón en lugar de mostrar algo roto.
-      available = false;
+      // Sin archivo de audio: escondemos el botón en vez de mostrar algo roto.
+      audioDisponible = false;
       btn.style.display = 'none';
     });
-
-    function sync() {
-      if (audio.paused) {
-        btn.classList.remove('playing');
-        iconPlay.classList.remove('hidden');
-        iconPause.classList.add('hidden');
-      } else {
-        btn.classList.add('playing');
-        iconPlay.classList.add('hidden');
-        iconPause.classList.remove('hidden');
-      }
-    }
 
     audio.volume = 0.4;
 
     btn.addEventListener('click', function () {
-      if (!available) return;
+      if (!audioDisponible) return;
       if (audio.paused) {
-        audio.play().catch(function (e) { console.log('El navegador bloqueó la reproducción', e); });
+        musicaArrancada = false;
+        iniciarMusica();
       } else {
         audio.pause();
       }
-      sync();
     });
 
-    audio.addEventListener('play', sync);
-    audio.addEventListener('pause', sync);
-    sync();
+    audio.addEventListener('play', sincronizarBotonMusica);
+    audio.addEventListener('pause', sincronizarBotonMusica);
+    sincronizarBotonMusica();
+
+    // Red de seguridad para quien entró sin tocar la pantalla de largada.
+    ['pointerdown', 'touchstart', 'keydown'].forEach(function (ev) {
+      document.addEventListener(ev, iniciarMusica, { once: true, passive: true });
+    });
   })();
 
   // ===== CONFETI ======================================================

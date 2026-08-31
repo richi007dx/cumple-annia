@@ -61,10 +61,8 @@
         <span class="start-light" data-light="2"></span>
         <span class="start-light" data-light="3"></span>
       </div>
-      <p id="start-go" class="font-display text-3xl sm:text-5xl neon-magenta opacity-0">¡ARRANCAMOS!</p>
-      <button id="start-skip" class="mt-10 text-xs tracking-widest text-white/50 hover:text-white transition-colors">
-        SALTAR ▸
-      </button>
+      <p id="start-go" class="font-display text-2xl sm:text-4xl neon-magenta opacity-0">¡TOCA PARA ARRANCAR!</p>
+      <p id="start-hint" class="mt-5 text-xs tracking-[0.2em] text-white/45 opacity-0">CON MÚSICA 🔊</p>
     </div>
   </div>
 
@@ -302,7 +300,7 @@
   <a href="#confirmar" id="sticky-cta">Confirmar asistencia</a>
 
   <!-- ===== REPRODUCTOR DE MÚSICA ===== -->
-  <audio id="bg-music" loop preload="none">
+  <audio id="bg-music" loop preload="metadata">
     <source src="assets/musica.m4a" type="audio/mp4" />
   </audio>
   <button id="custom-audio-btn" aria-label="Reproducir o pausar música">

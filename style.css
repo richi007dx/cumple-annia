@@ -79,7 +79,15 @@ body {
 }
 
 #start-go { transition: opacity .3s ease, transform .3s ease; transform: scale(.85); }
-#start-go.show { opacity: 1 !important; transform: scale(1); }
+#start-go.show { opacity: 1 !important; transform: scale(1); animation: tapPulse 1.6s ease-in-out infinite; }
+#start-hint { transition: opacity .4s ease .2s; }
+#start-hint.show { opacity: 1 !important; }
+#start-overlay.armed { cursor: pointer; }
+
+@keyframes tapPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
 
 /* ===== HERO ===== */
 #hero-photo {
