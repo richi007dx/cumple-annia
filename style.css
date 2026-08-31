@@ -238,6 +238,10 @@ body {
 
 #hero-cutout.ready { display: block; }
 .car-track.has-cutout .car { display: none; }
+
+/* Con el recorte al frente, la misma foto de fondo ensucia:
+   la bajamos a textura para que no compitan. */
+body:has(.car-track.has-cutout) #hero-photo { opacity: .12; }
 .car { width: 190px; margin: 0 auto -6px; display: block; animation: carBob 1.1s ease-in-out infinite; }
 
 .car-body    { fill: var(--racing); }
