@@ -56,6 +56,21 @@
     if (img.complete && img.naturalWidth === 0) img.classList.add('missing');
   })();
 
+  // ===== RECORTE SIN FONDO (opcional) =================================
+  // Si assets/heroes.png existe, manda él y se esconde el auto dibujado.
+  // Si no, no pasa nada: el SVG sigue siendo el plan A.
+  (function heroCutout() {
+    var img = $('hero-cutout');
+    var track = document.querySelector('.car-track');
+    if (!img || !track) return;
+
+    img.addEventListener('load', function () {
+      img.classList.add('ready');
+      track.classList.add('has-cutout');
+    });
+    img.addEventListener('error', function () { img.remove(); });
+  })();
+
   // ===== VIDEO OPCIONAL ===============================================
   (function optionalVideo() {
     var section = $('video-section');
