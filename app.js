@@ -10,9 +10,10 @@
   var WA_MAMA = '59160376893';   // Dayana Alejandra
   var MAX_NINOS = 6;
 
-  // Pegá aquí la URL del despliegue de Apps Script cuando la tengas.
-  // Mientras diga PENDIENTE, la página funciona igual: solo se salta el guardado.
-  var GOOGLE_SHEET_WEBHOOK_URL = 'PENDIENTE';
+  // Despliegue de Apps Script que escribe en la hoja de confirmaciones.
+  // Si algún día hay que rehacerlo, ojo: al editar el script no basta con
+  // guardar, hay que publicar una versión nueva o la URL sirve el código viejo.
+  var GOOGLE_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxrVSzobEx-RbqauA8pG0oO_22UxxU2DW7B1nE599JYpMPsj4jnCfSfpq3fRu52tFQS/exec';
 
   var $ = function (id) { return document.getElementById(id); };
 
